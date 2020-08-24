@@ -4,6 +4,11 @@
   <img src="https://github.com/arenac/blockchain/blob/master/assets/blockchain.png?raw=true"  alt="Block Chain" width="600" height="300"/>
 </p>
 
+
+[![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://badge.fury.io/gh/tterb%2FHyde)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)](https://github.com/arenac/blockchain/commits)
+
 ## Backend
 A Python API
 
@@ -23,6 +28,13 @@ source blockchain-env/bin/activate
 Now install all the dependencies
 ```
 pip3 install pytest==6.0.1
+```
+
+**Run the tests**
+
+With the virtual environment activated and the dependencies installed, run the tests from the root folder from this project:
+```
+python3 -m pytest backend/tests
 ```
 
 

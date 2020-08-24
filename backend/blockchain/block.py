@@ -1,6 +1,6 @@
 import time
 
-from crypto_hash import crypto_hash
+from backend.util.crypto_hash import crypto_hash
 
 class Block:
   """
@@ -13,7 +13,7 @@ class Block:
     self.hash = hash
     self.data = data
 
-  @staticmethod   
+  @staticmethod
   def mine_block(last_block, data):
     """
     Mine a block based on the given last_block and data.
@@ -23,7 +23,7 @@ class Block:
     hash = crypto_hash(timestamp, last_hash, data)
     return Block(timestamp, last_hash, hash, data)
 
-  @staticmethod   
+  @staticmethod
   def genesis():
     """
     Generate the genesis block.

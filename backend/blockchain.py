@@ -6,13 +6,14 @@ class Blockchain:
   Implement as a list of block - data sets of transactions
   """
   def __init__(self):
-    self.chain = []
+    self.chain = [Block.genesis()]
 
   def add_block(self, data):
-    self.chain.append(Block(data))
+    last_block = self.chain[-1]
+    self.chain.append(Block.mine_block(last_block, data))
 
   def __repr__(self):
-      return f'Blockchain: {self.chain}'
+    return f'Blockchain: {self.chain}'
 
 def main():
   blockchain = Blockchain()

@@ -1,7 +1,7 @@
 
 # Blockchain solution
 <p align="center">
-  <img src="https://github.com/arenac/blockchain/blob/master/assets/blockchain.png?raw=true"  alt="Block Chain" width="600" height="300"/>
+  <img src="https://github.com/arenac/blockchain/blob/master/assets/blockchain.png?raw=true"  alt="Block Chain" width="700" height="300"/>
 </p>
 
 

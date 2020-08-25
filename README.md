@@ -4,11 +4,9 @@
   <img src="https://github.com/arenac/blockchain/blob/master/assets/blockchain.png?raw=true"  alt="Block Chain" width="700" height="300"/>
 </p>
 
-<div style="text-align:center">
-  [![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://github.com/arenac/blockchain)
-  [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/arenac/blockchain/blob/master/LICENSE)
-  [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)](https://github.com/arenac/blockchain/commits)
-</div>
+[![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://github.com/arenac/blockchain)
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/arenac/blockchain/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)](https://github.com/arenac/blockchain/commits)
 
 ## Backend
 A Python API

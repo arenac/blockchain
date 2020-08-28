@@ -11,3 +11,11 @@ def test_add_block():
   blockchain.add_block(data)
 
   assert blockchain.chain[-1].data == data
+
+def test_is_valid_chain():
+  blockchain = Blockchain()
+
+  for i in range(3):
+    blockchain.add_block(i)
+
+  Blockchain.is_valid_chain(blockchain.chain)

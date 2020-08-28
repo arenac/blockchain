@@ -108,6 +108,9 @@ class Block:
     if block.hash != reconstructed_hash:
       raise Exception('The block hash must be correct')
 
+  def __eq__(self, other):
+    return self.__dict__ == other.__dict__
+
 def main():
   genesis_block = Block.genesis()
   bad_block = Block.mine_block(genesis_block, 'bad_one')

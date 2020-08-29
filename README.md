@@ -31,8 +31,7 @@ source blockchain-env/bin/activate
 Now install all the dependencies
 
 ```
-pip3 install pytest=6.0.1
-pip3 install Flask=1.1.2
+pip3 install pytest==6.0.1, Flask==1.1.2, pubnub==4.5.3, python-decouple==3.3
 ```
 
 **Run the tests**

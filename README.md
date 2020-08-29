@@ -1,5 +1,6 @@
 
 # Blockchain solution
+
 <p align="center">
   <img src="https://github.com/arenac/blockchain/blob/master/assets/blockchain.png?raw=true"  alt="Block Chain" width="700" height="300"/>
 </p>
@@ -9,36 +10,51 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat)](https://github.com/arenac/blockchain/commits)
 
 ## Backend
+
 A Python API
 
 
 **Set up a virtual environment**
 
 From backend folder type the following command in your terminal to generate the virtual environment
+
 ```
 python3 -m venv blockchan-env
 ```
 
 Next, activate it
+
 ```
 source blockchain-env/bin/activate
 ```
 
 Now install all the dependencies
+
 ```
-pip3 install pytest==6.0.1
+pip3 install pytest=6.0.1
+pip3 install Flask=1.1.2
 ```
 
 **Run the tests**
 
 With the virtual environment activated and the dependencies installed, run the tests from the root folder from this project:
+
 ```
 python3 -m pytest backend/tests
 ```
 
+**Run the API**
+
+From the development environment, run the command
+
+```
+python3 -m backend.api
+```
 
 ## Web
+
 A ReactJs app
 
 ## Mobile
+
 A React Native mobile app

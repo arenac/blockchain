@@ -37,6 +37,15 @@ class Block:
       f'nonce: {self.nonce})'
     )
 
+  def __eq__(self, other):
+    return self.__dict__ == other.__dict__
+
+  def to_json(self):
+    """
+    Serialize the blockchain into a dictionary ot its attributes.
+    """
+    return self.__dict__
+
   @staticmethod
   def mine_block(last_block, data):
     """
@@ -107,9 +116,6 @@ class Block:
 
     if block.hash != reconstructed_hash:
       raise Exception('The block hash must be correct')
-
-  def __eq__(self, other):
-    return self.__dict__ == other.__dict__
 
 def main():
   genesis_block = Block.genesis()

@@ -50,6 +50,14 @@ From the development environment, run the command
 python3 -m backend.api
 ```
 
+**Run a peer instance**
+
+From the development environment, run the command
+
+```
+export PEER=True && python3 -m backend.app
+```
+
 ## Web
 
 A ReactJs app

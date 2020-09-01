@@ -1,5 +1,8 @@
 import os
+import requests
 import random
+
+from decouple import config
 
 from flask import Flask, jsonify
 
@@ -29,9 +32,21 @@ def route_blockchain_mine():
 
   return jsonify(block.to_json())
 
-PORT = 5000
+PORT = config('PORT')
+url = config('API_URL')
+api_url = f'{url}:{PORT}'
 
 if os.environ.get('PEER') == 'True':
   PORT = random.randint(5001, 6000)
+
+  result = requests.get(f'{api_url}/blockchain')
+
+  result_blockchain = Blockchain.from_json(result.json())
+
+  try:
+    blockchain.replace_chain(result_blockchain.chain)
+    print('\n -- Successfully synchronized the local chain')
+  except Exception as e:
+    print(f'\n -- Error synchronizing: {e}')
 
 app.run(port=PORT)

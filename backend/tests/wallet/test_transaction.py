@@ -63,3 +63,21 @@ def test_transaction_update():
     transaction.output,
     transaction.input['signature']
   )
+
+def test_valid_transaction():
+  Transaction.is_valid_transaction(Transaction(Wallet(), 'recipient', 100))
+
+def test_transaction_with_invalid_outputs():
+  sender_wallet = Wallet()
+  transaction = Transaction(sender_wallet, 'recipient', 100)
+  transaction.output[sender_wallet.address] = 10000
+
+  with pytest.raises(Exception, match='Invalid transaction output values'):
+    Transaction.is_valid_transaction(transaction)
+
+def test_valid_transaction_with_invalid_signature():
+  transaction = Transaction(Wallet(), 'recipient', 100)
+  transaction.input['signature'] = Wallet().sign(transaction.output)
+
+  with pytest.raises(Exception, match='Invalid signature'):
+    Transaction.is_valid_transaction(transaction)

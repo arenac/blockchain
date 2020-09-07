@@ -18,20 +18,17 @@ wallet = Wallet()
 transaction_pool = TransactionPool()
 pubsub = PubSub(blockchain, transaction_pool)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def route_default():
   return 'Welcome to the blockchain'
 
-@app.route('/blockchain')
+@app.route('/blockchain', methods=['GET'])
 def route_blockchain():
   return jsonify(blockchain.to_json())
 
-@app.route('/blockchain/mine')
+@app.route('/blockchain/mine', methods=['GET'])
 def route_blockchain_mine():
-  transaction_data = 'stubbed_transaction_data'
-
-  blockchain.add_block(transaction_data)
-
+  blockchain.add_block(transaction_pool.transation_data())
   block = blockchain.chain[-1]
   pubsub.broadcast_block(block)
 

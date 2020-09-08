@@ -18,15 +18,19 @@ class Wallet:
   Keeps track of the miner's balance.
   Allows a miner to authorize transactions.
   """
-  def __init__(self):
+  def __init__(self, blockchain=None):
+    self.blockchain = blockchain
     self.address = str(uuid.uuid4())[0:8]
     self.private_key = ec.generate_private_key(
       ec.SECP256K1(),
       default_backend()
     )
     self.public_key  = self.private_key.public_key()
-    self.balance = STARTING_BALANCE
     self.serialize_public_key()
+
+  @property
+  def balance(self):
+    return Wallet.calculate_balance(self.blockchain, self.address)
 
   def sign(self, data):
     """
@@ -53,7 +57,7 @@ class Wallet:
     """
     Verify a signature based on the original publis key and data.
     """
-    deserialize_public_key = serialization.load_pem_public_key(
+    deserialized_public_key = serialization.load_pem_public_key(
       public_key.encode('utf-8'),
       default_backend()
     )
@@ -61,7 +65,7 @@ class Wallet:
     (r, s) = signature
 
     try:
-      deserialize_public_key.verify(
+      deserialized_public_key.verify(
         encode_dss_signature(r, s),
         json.dumps(data).encode('utf-8'),
         ec.ECDSA(hashes.SHA256())
@@ -80,6 +84,9 @@ class Wallet:
     address since the most recent transation by that addess.
     """
     balance = STARTING_BALANCE
+
+    if not blockchain:
+      return balance
 
     for block in blockchain.chain:
       for transaction in block.data:

@@ -14,7 +14,7 @@ from backend.wallet.transaction import Transaction
 
 app = Flask(__name__)
 blockchain = Blockchain()
-wallet = Wallet()
+wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()
 pubsub = PubSub(blockchain, transaction_pool)
 
@@ -56,6 +56,14 @@ def route_wallet_transaction():
   pubsub.broadcast_transaction(transaction)
 
   return jsonify(transaction.to_json())
+
+@app.route('/wallet/info', methods=['GET'])
+def route_wallet_info():
+  return jsonify({
+    'address': wallet.address,
+    'balance': wallet.balance
+  })
+
 
 PORT = config('PORT')
 url = config('API_URL')

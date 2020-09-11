@@ -1,15 +1,15 @@
 import React from 'react';
-import './index.css';
 
-import logo from './assets/logo.png';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      {/* <img className="logo" src={logo} alt="Logo"/> */}
-      <h1>Blockchain</h1>
-    </div>
-  );
-}
+import Routes from './router';
+import GlobalStyles from './styles/globais';
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <Routes />
+    <GlobalStyles />
+  </BrowserRouter>
+);
 
 export default App;

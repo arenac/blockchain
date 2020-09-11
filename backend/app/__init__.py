@@ -14,7 +14,7 @@ from backend.wallet.transaction_pool import TransactionPool
 from backend.wallet.transaction import Transaction
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r'/*': { 'origins': 'http://localhost:3000' }})
 blockchain = Blockchain()
 wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()

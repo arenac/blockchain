@@ -32,7 +32,7 @@ source blockchain-env/bin/activate
 Now install all the dependencies
 
 ```
-pip3 install pytest==6.0.1, Flask==1.1.2, pubnub==4.5.3, python-decouple==3.3, requests==2.22.0, cryptography==2.8
+pip3 install pytest==6.0.1, Flask==1.1.2, pubnub==4.5.3, python-decouple==3.3, requests==2.22.0, cryptography==2.8, flask-cors==3.0.9
 ```
 
 **Run the tests**
@@ -61,8 +61,8 @@ export PEER=True && python3 -m backend.app
 
 ## Web
 
-A ReactJs app
+A ReactJs app (in development)
 
 ## Mobile
 
-A React Native mobile app
+A React Native mobile app (in development)

@@ -5,6 +5,7 @@ import random
 from decouple import config
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from backend.blockchain.blockchain import Blockchain
 from backend.blockchain.pubsub import PubSub
@@ -13,6 +14,7 @@ from backend.wallet.transaction_pool import TransactionPool
 from backend.wallet.transaction import Transaction
 
 app = Flask(__name__)
+CORS(app)
 blockchain = Blockchain()
 wallet = Wallet(blockchain)
 transaction_pool = TransactionPool()

@@ -4,3 +4,4 @@ pubnub==4.5.3
 python-decouple==3.3
 requests==2.22.0
 cryptography==2.8
+flask-cors==3.0.9

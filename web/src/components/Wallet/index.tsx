@@ -20,6 +20,7 @@ const Wallet: React.FC = () => {
 
   return (
     <Container>
+      <h3>Wallet</h3>
       <p>Address: {walletInfo?.address}</p>
     </Container>
   );

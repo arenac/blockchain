@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: grid;
+  margin-top: 20px;
   border: 1px solid #000;
   border-radius: 8px;
   padding: 10px;
@@ -10,9 +10,10 @@ export const Container = styled.div`
   h3 {
     text-align: center;
     font-weight: bold;
+    margin-bottom: 20px;
   }
 
-  p {
-    margin-top: 30px;
+  div {
+    margin-top: 10px;
   }
 `;

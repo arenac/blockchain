@@ -1,19 +1,27 @@
 import React from 'react';
 
-import { Container, HeaderContand } from './styles';
+import { HeaderContend, Contend } from './styles';
 
 import logo from '../../assets/logo.png';
 import Wallet from '../../components/Wallet';
+import { Container } from '@material-ui/core';
+import Header from '../../components/Header';
+import Blockchain from '../../components/Blockchain';
 
 const Home: React.FC = () => {
   return (
-    <Container>
-      <HeaderContand>
+
+    <Container fixed>
+      {/* <Header /> */}
+      <HeaderContend>
         <img src={logo} alt="Logo"/>
         <h1>Welcome to pychain</h1>
-      </HeaderContand>
+      </HeaderContend>
 
-      <Wallet />
+      <Contend>
+        <Wallet />
+        <Blockchain />
+      </Contend>
     </Container>
   );
 }

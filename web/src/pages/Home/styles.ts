@@ -4,7 +4,7 @@ export const Container = styled.div`
 
 `;
 
-export const HeaderContand = styled.div`
+export const HeaderContend = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,4 +18,8 @@ export const HeaderContand = styled.div`
   h1 {
     margin-left: 30px;
   }
+`;
+
+export const Contend = styled.div`
+  padding: 30px 40px;
 `;

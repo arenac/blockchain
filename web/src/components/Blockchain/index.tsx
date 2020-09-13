@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
+import Block from '../Block';
 
 import { Container } from './styles';
 
@@ -26,9 +27,12 @@ const Blockchain: React.FC = () => {
     <Container>
       <h3>Blockchain</h3>
       { blockchain?.map(block =>
-        <div key={block?.hash}>
-          {JSON.stringify(block)}
-        </div>
+        <Block
+          key={block.hash}
+          timestamp={block.timestamp}
+          hash={block.hash}
+          data={block.data}
+        />
       )}
     </Container>
   );

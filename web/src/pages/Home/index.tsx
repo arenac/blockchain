@@ -6,7 +6,6 @@ import logo from '../../assets/logo.png';
 import Wallet from '../../components/Wallet';
 import { Container } from '@material-ui/core';
 import Blockchain from '../../components/Blockchain';
-import Transaction from '../../components/Transaction';
 
 const Home: React.FC = () => {
   return (
@@ -21,7 +20,7 @@ const Home: React.FC = () => {
       <Contend>
         <Wallet />
         <Blockchain />
-        <Transaction />
+
       </Contend>
     </Container>
   );

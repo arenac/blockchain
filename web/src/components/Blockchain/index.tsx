@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../services/api';
 import Block from '../Block';
+import { TransactionProps } from '../Transaction';
 
 import { Container } from './styles';
 
 interface Response {
-  data: Object[];
+  data: TransactionProps[];
   difficult: number;
   hash: string;
   last_hash: string;

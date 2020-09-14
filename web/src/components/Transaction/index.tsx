@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 export interface TransactionProps {
-  id: string;
+  id?: string;
   input: {
     address: string;
     amount: number;
@@ -14,8 +14,7 @@ export interface TransactionProps {
   output: Record<string, number>;
 };
 
-const Transaction: React.FC<TransactionProps> = ( transaction, ...rest ) => {
-  const { input, output } = transaction;
+const Transaction: React.FC<TransactionProps> = ( {id, input, output} ) => {
   const recipients = Object.keys(output);
 
   return (

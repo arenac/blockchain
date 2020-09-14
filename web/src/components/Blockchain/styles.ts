@@ -5,7 +5,7 @@ export const Container = styled.div`
   border: 1px solid #000;
   border-radius: 8px;
   padding: 10px;
-  background-color: #001970;
+  background-color: #001064;
 
   h3 {
     text-align: center;

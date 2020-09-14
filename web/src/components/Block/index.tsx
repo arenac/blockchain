@@ -23,7 +23,7 @@ const Block: React.FC<BlockProps> = ({timestamp, hash, data}) => {
         {
           data.map(transaction => (
             <>
-              <hr/>
+              {/* <hr/> */}
               <Transaction
                 key={transaction.id}
                 input={transaction.input}

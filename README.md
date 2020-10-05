@@ -59,9 +59,23 @@ From the development environment, run the command
 export PEER=True && python3 -m backend.app
 ```
 
+**Seed the backend with data**
+
+Start the backend with the environment variable:
+
+```
+export SEED_DATA=True && python3 -m backend.app
+```
+
 ## Web
 
 A ReactJs app (in development)
+
+From the web directory:
+```
+yarn start
+```
+
 
 ## Mobile
 

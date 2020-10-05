@@ -2,10 +2,8 @@ import React, { useRef } from 'react';
 import Transaction, { TransactionProps } from '../Transaction';
 
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
+import { Accordion, AccordionSummary, AccordionDetails, Typography, List, ListItem } from '@material-ui/core';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { Container } from './styles';
@@ -21,6 +19,12 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: theme.typography.pxToRem(15),
       fontWeight: theme.typography.fontWeightRegular,
     },
+    list: {
+      justifyContent: 'center',
+    },
+    listItem: {
+      justifyContent: 'center',
+    }
   }),
 );
 interface BlockProps {
@@ -38,28 +42,30 @@ const Block: React.FC<BlockProps> = ({timestamp, hash, data}) => {
 
   return (
     <Container>
-      <div>Timestamp: {timestampDisplay}</div>
+      <strong>Timestamp: {timestampDisplay}</strong>
       <div>Hash: {hashDisplay}</div>
       <div className={classes.root} >
-        {
-          data.map(transaction => (
-            <Accordion key={transaction.id} ref={ref}>
+          <Accordion  ref={ref}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
-              >
-                <Typography className={classes.heading}>{transaction.id}</Typography>
+                >
               </AccordionSummary>
-              <AccordionDetails>
-                <Transaction
-                  input={transaction.input}
-                  output={transaction.output}
-                />
+              <AccordionDetails className={classes.list}>
+                <List>
+                  {data.map(transaction => (
+                    <ListItem className={classes.listItem}>
+                      <Transaction
+                        key={transaction.id}
+                        input={transaction.input}
+                        output={transaction.output}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
               </AccordionDetails>
             </Accordion>
-          ))
-        }
       </div>
     </Container>
   );

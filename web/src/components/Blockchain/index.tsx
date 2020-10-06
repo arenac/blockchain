@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {TablePagination, Box} from '@material-ui/core';
 import api from '../../services/api';
 import Block from '../Block';
 import { TransactionProps } from '../Transaction';
@@ -15,14 +16,43 @@ interface Response {
 }
 
 const Blockchain: React.FC = () => {
+  const [size, setSize] = useState(0);
   const [blockchain, setBlockchain] = useState<Response[]>();
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(4);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const perPage = event.target.value;
+    setRowsPerPage(parseInt(perPage, 10));
+    setPage(0);
+    setStart(0);
+    setEnd(parseInt(perPage))
+    console.log('handleChangeRowsPerPage')
+  };
 
   useEffect(() => {
-    api.get('blockchain')
+    api.get('blockchain/length')
+      .then(response => {
+        const _size = response.data;
+        setSize(_size);
+      });
+  }, []);
+
+  useEffect(() => {
+    api.get(`blockchain/range?start=${start}&end=${end}`)
       .then(response => {
         setBlockchain(response.data);
-      })
-  }, []);
+      });
+  }, [start, end]);
 
   return (
     <Container>
@@ -35,6 +65,16 @@ const Blockchain: React.FC = () => {
           data={block.data}
         />
       )}
+      <Box>
+        <TablePagination
+          component="div"
+          count={size}
+          page={page}
+          onChangePage={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </Box>
     </Container>
   );
 

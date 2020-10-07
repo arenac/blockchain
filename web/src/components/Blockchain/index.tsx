@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {TablePagination, Box} from '@material-ui/core';
+import {TablePagination} from '@material-ui/core';
 import api from '../../services/api';
 import Block from '../Block';
 import { TransactionProps } from '../Transaction';
@@ -18,11 +18,8 @@ interface Response {
 const Blockchain: React.FC = () => {
   const [size, setSize] = useState(0);
   const [blockchain, setBlockchain] = useState<Response[]>();
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(4);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
@@ -31,12 +28,8 @@ const Blockchain: React.FC = () => {
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const perPage = event.target.value;
-    setRowsPerPage(parseInt(perPage, 10));
+    setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-    setStart(0);
-    setEnd(parseInt(perPage))
-    console.log('handleChangeRowsPerPage')
   };
 
   useEffect(() => {
@@ -48,11 +41,13 @@ const Blockchain: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const start = page * rowsPerPage;
+    const end = start + rowsPerPage;
     api.get(`blockchain/range?start=${start}&end=${end}`)
       .then(response => {
         setBlockchain(response.data);
       });
-  }, [start, end]);
+  }, [page, rowsPerPage]);
 
   return (
     <Container>
@@ -65,16 +60,17 @@ const Blockchain: React.FC = () => {
           data={block.data}
         />
       )}
-      <Box>
-        <TablePagination
-          component="div"
-          count={size}
-          page={page}
-          onChangePage={handleChangePage}
-          rowsPerPage={rowsPerPage}
-          onChangeRowsPerPage={handleChangeRowsPerPage}
-        />
-      </Box>
+      <TablePagination
+        id="blockchain-pagination"
+        component="div"
+        count={size}
+        page={page}
+        onChangePage={handleChangePage}
+        rowsPerPageOptions={[5, 10, 15]}
+        rowsPerPage={rowsPerPage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+        color="secondary"
+      />
     </Container>
   );
 

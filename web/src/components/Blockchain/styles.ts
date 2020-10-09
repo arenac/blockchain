@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-import {
-  TablePagination as tablePagination
-} from '@material-ui/core';
-
 export const Container = styled.div`
   & {
     margin-top: 20px;

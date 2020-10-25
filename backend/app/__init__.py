@@ -79,6 +79,18 @@ def route_wallet_info():
     'balance': wallet.balance
   })
 
+@app.route('/known-addresses')
+def route_known_addresses():
+  know_addresses = set()
+
+  for block in blockchain.chain:
+    for transaction in block.data:
+      know_addresses.update(transaction['output'].keys())
+
+  return jsonify(list(know_addresses))
+
+
+
 PORT = config('PORT')
 url = config('API_URL')
 api_url = f'{url}:{PORT}'

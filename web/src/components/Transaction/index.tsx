@@ -1,6 +1,17 @@
 import React from 'react';
+import { createStyles, makeStyles, Paper, Theme } from '@material-ui/core';
 
 import { Container } from './styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'left',
+      color: theme.palette.text.secondary,
+    },
+  }),
+);
 
 export interface TransactionProps {
   id?: string;
@@ -15,10 +26,11 @@ export interface TransactionProps {
 };
 
 const Transaction: React.FC<TransactionProps> = ( {id, input, output} ) => {
+  const classes = useStyles();
   const recipients = Object.keys(output);
 
   return (
-    <Container>
+    <Paper className={classes.paper}>
       <div>From: {input.address}</div>
       {
         recipients.map(recipient => (
@@ -27,7 +39,7 @@ const Transaction: React.FC<TransactionProps> = ( {id, input, output} ) => {
           </div>
         ))
       }
-    </Container>
+    </Paper>
   );
 }
 

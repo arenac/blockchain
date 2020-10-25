@@ -2,11 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   & {
+    padding: 100px 200px;
+  }
+`;
+
+export const Content = styled.div`
+  & {
     margin-top: 20px;
-    border: 1px solid #000;
     border-radius: 8px;
     padding: 10px;
-    background-color: #001064;
 
     h3 {
       text-align: center;
@@ -19,9 +23,7 @@ export const Container = styled.div`
     }
 
     #blockchain-pagination {
-      color: #fff;
       svg {
-        color: #fff;
       }
       .MuiInputBase-root.MuiTablePagination-input.MuiTablePagination-selectRoot {
         margin-top: 0;

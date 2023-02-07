@@ -3,5 +3,5 @@ Flask==1.1.2
 pubnub==4.5.3
 python-decouple==3.3
 requests==2.22.0
-cryptography==2.8
+cryptography==39.0.1
 flask-cors==3.0.9
